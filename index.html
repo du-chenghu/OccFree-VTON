@@ -1,10 +1,297 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>我的网站</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Mitigating Occlusions in Virtual Try-On via A Simple-Yet-Effective Mask-Free Framework.">
+  <meta name="keywords" content="OccFree-VTON, virtual try-on">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mitigating Occlusions in Virtual Try-On via A Simple-Yet-Effective Mask-Free Framework</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-  <h1>欢迎来到我的网站！</h1>
-  <p>这是一个用 GitHub Pages 搭建的静态页面。</p>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Mitigating Occlusions in Virtual Try-On via A Simple-Yet-Effective Mask-Free Framework</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Thirty-nineth Conference on Neural Information Processing Systems</span><br>
+            <span class="author-block">🔥(NeurIPS 2025)🔥</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/">Chenghu Du</a><sup>1</sup>,
+            </span>
+
+            <span class="author-block">
+              <a href="https://github.com/">Shengwu Xiong</a><sup>2,3</sup>
+            </span>
+            
+            <span class="author-block">
+              <a href="https://github.com/">Junyin Wang</a><sup>1</sup>,
+            </span>
+                        
+            <span class="author-block">
+              <a href="https://github.com/">Yi Rong</a><sup>1,*</sup>,
+            </span>
+            
+            <span class="author-block">
+              <a href="https://github.com/">Shili Xiong</a><sup>1,*</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Wuhan University of Technology,</span>
+            <span class="author-block"><sup>2</sup>Interdisciplinary Artificial Intelligence Research Institute,</span><br>
+            <span class="author-block"><sup>3</sup>Shanghai AI Laboratory</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/0.0"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/0.0"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Supplemental</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/du-chenghu/USC-PFN/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1Uc0DTTkSfCPXDhd4CMx2TQlzlC6bDolK/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1Tu411u7Wa&page=1" 
+            scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+    <hr>
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          
+          <p>
+            Image-based virtual try-on tasks remain challenging, primarily due to inherent complexities associated with <b>non-rigid garment deformation modeling</b> and <b>strong feature entanglement of clothing within human body</b>. 
+          </p>
+          <p>
+            Recent groundbreaking formulations, such as <b>in-painting</b>, <b>cycle consistency</b>, and <b>knowledge distillation</b>, have facilitated self-supervised generation of try-on images. However, these paradigms necessitate the disentanglement of garment features within human body features through auxiliary tasks, such as leveraging 'teacher knowledge' and dual generators.
+          </p>
+          <p>
+            The potential presence of irresponsible prior knowledge in the auxiliary task can serve as a significant bottleneck for the main generator (e.g., 'student model') in the downstream task. Moreover, existing garment deformation methods lack the ability to perceive the correlation between the garment and the human body in the real world, leading to unrealistic alignment effects. 
+          </p>
+          <p>
+            To tackle these limitations, we present a new network for parser-free virtual try-on called unified self-cycle consistency (<b>USC-PFN</b>), which enables robust translation between different garments using just a single generator, faithfully replicating non-rigid geometric deformation of garments in real-life scenarios. Specifically, we first propose a self-cycle consistency architecture with a circular mode. It utilizes real unpaired garment-person images exclusively as input for training, effectively eliminating the impact of irresponsible prior knowledge at the model input end. Additionally, we formulate a Markov Random Field to simulate a more natural and realistic garment deformation. Furthermore, USC-PFN can leverage a general generator for self-supervised cycle training.
+          </p>
+          <p>
+            Experiments demonstrate that our method achieves state-of-the-art performance on a popular virtual try-on benchmark.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <hr>
+    <!-- Paper and Supplementary Material -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Paper and Supplementary Material</h2>
+
+        <!--/ MAIN -->
+        <div>
+          <div style="float:left;">
+              <img src="./static/paper.png" style="width: 220px; margin:20px; box-shadow: 7px 7px 10px 10px grey;">
+          </div>
+          <div style="margin-top: 100px; margin-left: 35px; margin-bottom: auto; float:left;">
+              <a href="https://arxiv.org/">[Paper]</a>
+              <a href="https://github.com/du-chenghu/USC-PFN/">[Code]</a>
+              <p>
+                  NeurIPS, 2023. <br>
+                  Chenghu Du, Junyin Wang, Shuqing Liu, Shengwu Xiong*. <br>
+                  "USC-PFN: Unified Self-cycle Consistency for Parser-free <br> Virtual Try-on"
+              </p>
+          </div>
+        </div>
+        </div>
+        <!--/ MAIN -->
+      
+    </div>
+    <!-- Paper and Supplementary Material -->
+
+    <hr>
+
+    <!-- Experiments -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experiments</h2>
+        <div class="content has-text-justified">
+          <p>
+            The test pair and test results on VITON dataset are shown <a href="https://drive.google.com/file/d/1qxDdvBKIQisxxu2pYky5dkKEufj_bV_v/view?usp=sharing">this</a> and <a href="https://drive.google.com/file/d/1yYvBoTUqwQjllS9XELoDQFuqZXdgqzL3/view?usp=sharing">here</a>, from left to right are reference person, target clothes, try-on results of five baseline methods including CP-VITON+ (CVPRW 2020), ACGPN (CVPR 2020), DCTON (CVPR 2021), RT-VITON (CVPR 2022), and USC-PFN.
+          </p>  
+
+        </div>
+      </div>
+    </div>
+    <!--/ Experiments -->
+
+    <hr>
+    
+<!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div style="float:left;">
+              <img src="./imgs/head.gif">
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+    <hr>
+    <br><br>
+
+    <!-- bottom.png -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div>
+              <img src="./static/bottom.png" style="width: 100%;">
+        </div>
+      </div>
+    </div>
+    <!--/ bottom.png -->
+    
+
+  
+  </div>
+</section>
+  
+<hr>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+    @inproceedings{du2023greatness,
+        title={Greatness in Simplicity: Unified Self-Cycle Consistency for Parser-Free Virtual Try-On},
+        author={Du, Chenghu and Wang, Junyin and Liu, Shuqing and Xiong, Shengwu},
+        booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+        year={2023}
+        pages={1--12},
+    }
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/du-chenghu/USC-PFN/" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            The website template is borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>. Thanks to the original authors.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

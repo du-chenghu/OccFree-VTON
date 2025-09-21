@@ -33,8 +33,20 @@
 </div>
 
 
-**[Abstract]** This paper investigates the occlusion problems in virtual try-on (VTON) tasks. According to how they affect the try-on results, the occlusion issues of existing VTON methods can be grouped into two categories: (1) Inherent Occlusions, which are the ghosts of the clothing from reference input images that exist in the try-on results. (2) Acquired Occlusions, where the spatial structures of the generated human body parts are disrupted and appear unreasonable. To this end, we analyze the causes of these two types of occlusions, and propose a novel mask-free VTON framework based on our analysis to  deal with these occlusions effectively. In this framework, we develop two simple-yet-powerful operations: (1) The background pre-replacement operation prevents the model from confusing the target clothing information with the human body or image background, thereby mitigating inherent occlusions. (2) The covering-and-eliminating operation enhances the model's ability of understanding and modeling human semantic structures, leading to more realistic human body generation and thus reducing acquired occlusions. Moreover, our method is highly generalizable, which can be applied in in-the-wild scenarios, and our proposed operations can also be easily integrated into different generative network architectures (e.g., GANs and diffusion models) in a plug-and-play manner. Extensive experiments on three VTON datasets validate the effectiveness and generalization ability of our method. Both qualitative and quantitative results demonstrate that our method outperforms recently proposed VTON benchmarks. 
+## 📄 Abstract
 
+This work tackles occlusion issues in Virtual Try-On (VTON).  
+We taxonomize failures into:
+
+1. **Inherent Occlusions** – “ghost” garments from the reference image that remain in the result.  
+2. **Acquired Occlusions** – distorted human anatomy that visually blocks the new outfit.
+
+To remove both, we propose a **mask-free VTON framework** with two plug-and-play operations:
+
+- **Background Pre-Replacement** – swaps the background before generation so the model never confuses clothes with body/background, suppressing inherent occlusions.  
+- **Covering-and-Eliminating** – enforces human-aware semantics, yielding anatomically plausible shapes and thus fewer acquired occlusions.
+
+The operations are architecture-agnostic: drop them into GANs or diffusion models without re-design.  
 
 ![teaser](assets/teaser.png)
 
@@ -42,24 +54,47 @@
 <img src="assets/OccFree-VTON-video.gif" alt="video" width="100%">
 </div>
 
-## News
+## 🆕 News
 
-- **2025-09-21:** 🔥  The OccFree-VTON model and evaluation benchmarks are released
+*All dates are UTC.*
 
-## TODO List
-- **2025-07-03:** 🚀  OccFree-VTON was ranked **#3 Paper of the Day** on [HuggingFace Daily Papers](https://huggingface.co/papers/date/2025-07-03).
-- **2025-07-03:** 🔥  The paper of [OccFree-VTON](https://arxiv.org/abs/2507.01634) is released. 
-- **2025-07-02:** 🔥  The code of [OccFree-VTON](HVision-NKU/DepthAnythingAC) is released.
-- [ ] Instructions for training dataset download and process.
-- [ ] Jittor implementation of OccFree-VTON.
-- [ ] Longer and more comprehensive video demo.
-## Model Architecture
+- **2025-09-20** 🚀 Project page & teaser image live.
+- **2025-09-19** 🔥 Paper accepted at NeurIPS 2025.  
+
+## 🚧 TODO List
+
+**The `test code` has been released, the `training code` will be released soon.**
+- [x] [2025-00-00] Release the **training script**.
+- [x] [2025-00-00] Release the **pretrained model**.
+- [x] [2025-09-21] Release the **testing script**.
+- [x] [2025-09-21] Release the **manuscript**.
+
+## 🏗 Model Architecture
 
 ![architecture](assets/architecture.png)
 
-## Installation
+### 🔧 Installation
+```
+pip3 install -r requirements.txt
+```
 
-### Requirements
+**or**
+
+`conda create -n uscpfn python=3.6`
+
+`source activate uscpfn     or     conda activate uscpfn`
+
+`conda install pytorch=1.6.0 torchvision=0.7.0 cudatoolkit=11.7 -c pytorch`
+
+`conda install cupy     or     pip install cupy==8.3.0`
+
+`pip install opencv-python`
+
+`git clone https://github.com/du-chenghu/OccFree-VTON.git`
+
+`cd ./OccFree-VTON/`
+
+### 📋 Requirements
 
 - Python>=3.9
 - torch==2.3.0
@@ -67,7 +102,7 @@
 - torchaudio==2.3.0
 - cuda==12.1
 
-### Setup
+### ⚙️ Setup
 
 ```bash
 git clone https://github.com/HVision-NKU/DepthAnythingAC.git
@@ -77,10 +112,18 @@ conda activate depth_anything_ac
 pip install -r requirements.txt
 ```
 
+## 📦 Dataset
 
+We train and evaluate on two standard VTON datasets:
 
-## Usage
-### Get Depth-Anything-AC Model
+| Dataset | Images | Resolution | Download | Annotation |
+|---------|--------|------------|----------|------------|
+| VITON-HD | ~13k | 1024×768 | [Google Drive]([https://drive.google.com/xxx](https://github.com/shadow2496/VITON-HD)) | keypoints, parse, cloth |
+| DressCode | ~52k | 512×384 | [Official](https://dress-code.s3.eu-central-1.amazonaws.com) | keypoints, parse, cloth |
+
+## 🚀 Usage
+
+### Get the Model
 Download the pre-trained checkpoints from [Hugging Face](https://huggingface.co/ghost233lism/OccFree-VTON):
 ```bash
 mkdir checkpoints
@@ -96,36 +139,30 @@ huggingface-cli download --resume-download ghost233lism/OccFree-VTON --local-dir
 We also provide the OccFree-VTON model on Google Drive: [Download](https://drive.google.com/drive/folders/1yjM7_V9XQlL-taoRTbMq7aoCh1-Xr-ya?usp=sharing)
 
 
-### Quick Inference
-
-We provide the quick inference scripts for single/batch image input in `tools/`.  Please refer to [infer](./tools/README.md) for detailed information.
-
-### Training
-We provide the full training process of OccFree-VTON, including consistency regularization, spatial distance extraction/constraint and wide-used Affine-Invariant Loss Function.
-
-Prepare your configuration in `configs/` file and run:
-
-```bash
-bash tools/train.sh <num_gpu> <port>
+### Inference
+1. cd OccFree-VTON
 ```
-
-### Evaluation
-We provide the direct evaluation for DA-2K, enhanced DA-2K, KITTI, NYU-D, Sintel, ETH3D, DIODE, NuScenes-Night, RobotCar-night, DS-rain/cloud/fog, KITTI-C benchmarks. You may refer to `configs/` for more details.
-
-```bash
-bash tools/val.sh <num_gpu> <port> <dataset>
+cd OccFree-VTON-main
 ```
+2. First, you need to download the [[Checkpoints for Test]](https://drive.google.com) and put these under the folder `checkpoints/`. The folder `checkpoints/` shold contain `ngd_model_final.pth` and `sig_model_final.pth`. 
+3. Please put the test set of the dataset in the `dataset/`, i.e., the `dataset/` folder should contain the `test_pairs.txt` and `test/`.
+4. To generate virtual try-on images, just run:
+```
+python test.py
+```
+5. The results will be saved in the folder `results/`.
+> During inference, only a person image and a clothes image are fed into the network to generate the try-on image. **No human parsing results or human pose estimation results are needed for inference.**
 
-## Results
+> **To reproduce our results from the saved model, your test environment should be the same as our test environment.**
 
-### Quantitative Results
-
-#### DA-2K Multi-Condition Robustness Results
+- Note that if you want to test **paired data (paired clothing-person images)**, please download the replaceable list <a href="https://drive.google.com/file/d/1yYvBoTUqwQjllS9XELoDQFuqZXdgqzL3/view?usp=sharing">here (test_pairs.txt)</a>.
 
 
 
+## 📊 Visualization Results
 
-## Citation
+
+## 📄 Citation
 
 If you find this work useful, please consider citing:
 
@@ -138,22 +175,20 @@ If you find this work useful, please consider citing:
 }
 ```
 
+## 📬 Contact
 
-## License
+For technical questions or commercial licensing, please contact 
+duch@whut.edu.cn
+
+## 🤝 Acknowledgements
+Our code is based on the official implementation of [[CatVTON](https://github.com/Zheng-Chong/CatVTON)]. We thank the authors of [CatVTON] for the foundational work. We also thank the authors of VITON-HD and DressCode datasets for their excellent benchmarks, and the open-source communities of PyTorch, HuggingFace Diffusers and xformers.
+
+## 📜 License
 
 This code is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) for non-commercial use only.
 Please note that any commercial use of this code requires formal permission prior to use.
 
-## Contact
-
-For technical questions, please contact 
-sbysbysby123[AT]gmail.com or jin_modi[AT]mail.nankai.edu.cn
-
-For commercial licensing, please contact andrewhoux[AT]gmail.com.
-
-## Acknowledgements
-
-We thank the authors of [DepthAnything](https://github.com/LiheYoung/Depth-Anything) and [DepthAnything V2](https://github.com/DepthAnything/Depth-Anything-V2) for their foundational work. We also acknowledge [DINOv2](https://github.com/facebookresearch/dinov2) for the robust visual encoder, [CorrMatch](https://github.com/BBBBchan/CorrMatch) for their codebase, and [RoboDepth](https://github.com/ldkong1205/RoboDepth) for their contributions.
+---
 
 <p align="center"> 
 <img src="https://api.star-history.com/svg?repos=du-chenghu/OccFree-VTON&type=Date" style="width:70%"/>

@@ -48,7 +48,7 @@ To remove both, we propose a **mask-free VTON framework** with two plug-and-play
 
 The operations are architecture-agnostic: drop them into GANs or diffusion models without re-design.  
 
-![teaser](assets/teaser.png)
+![teaser](static/images/teaser_01.png)
 
 <div align="center">
 <img src="assets/OccFree-VTON-video.gif" alt="video" width="100%">
@@ -160,7 +160,15 @@ python test.py
 
 
 ## 📊 Visualization Results
-
+<div align="center">
+  <img src="static/images/appDress_01.png" alt="video" width="100%">
+</div>
+<div align="center">
+  <img src="static/images/appUpper_01.png" alt="video" width="100%">
+</div>
+<div align="center">
+  <img src="static/images/appLower_01.png" alt="video" width="100%">
+</div>
 
 ## 📄 Citation
 

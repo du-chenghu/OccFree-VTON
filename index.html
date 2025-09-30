@@ -49,7 +49,8 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Mitigating Occlusions in Virtual Try-On via A Simple-Yet-Effective Mask-Free Framework</h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Thirty-nineth Conference on Neural Information Processing Systems</span><br>
+            <span class="author-block">The Thirty-Ninth Annual Conference on <b>Neur</b>al <b>I</b>nformation <b>P</b>rocessing <b>S</b>ystems</span><br>
+            <span class="author-block"><img src="https://neurips.cc/static/core/img/neurips-navbar-logo.svg" style="width: 100%;"></span>
             <span class="author-block">🔥(NeurIPS 2025)🔥</span>
           </div>
 
@@ -59,7 +60,7 @@
             </span>
 
             <span class="author-block">
-              <a href="https://github.com/">Shengwu Xiong</a><sup>2,3</sup>
+              <a href="https://github.com/">Shengwu Xiong</a><sup>2,4</sup>
             </span>
             
             <span class="author-block">
@@ -67,7 +68,7 @@
             </span>
                         
             <span class="author-block">
-              <a href="https://github.com/">Yi Rong</a><sup>1,*</sup>,
+              <a href="https://github.com/">Yi Rong</a><sup>1,3,*</sup>,
             </span>
             
             <span class="author-block">
@@ -76,16 +77,17 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Wuhan University of Technology,</span>
+            <span class="author-block"><sup>1</sup>Wuhan University of Technology (武汉理工大学),</span><br>
             <span class="author-block"><sup>2</sup>Interdisciplinary Artificial Intelligence Research Institute,</span><br>
-            <span class="author-block"><sup>3</sup>Shanghai AI Laboratory</span>
+            <span class="author-block"><sup>3</sup>Sanya Science and Education Innovation Park,</span><br>
+            <span class="author-block"><sup>4</sup>Shanghai AI Laboratory</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/0.0"
+                <a href="https://openreview.net/pdf?id=oh2MpJHGHW"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -104,7 +106,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/du-chenghu/USC-PFN/"
+                <a href="https://github.com/du-chenghu/OccFree-VTON/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -136,17 +138,27 @@
   <div class="container is-max-desktop">
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
+        <h2 class="title is-3">Teaser</h2>
         <div class="publication-video">
           <iframe src="//player.bilibili.com/player.html?bvid=BV1Tu411u7Wa&page=1" 
             scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+          <img src="static/images/teaser_01.png">
 
+        </div>
+      </div>
+    </div> -->
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div>
+              <img src="static/images/teaser_01.png" style="width: 100%;">
         </div>
       </div>
     </div>
     <!--/ Paper video. -->
+
     <hr>
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -154,20 +166,29 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           
+          
           <p>
-            Image-based virtual try-on tasks remain challenging, primarily due to inherent complexities associated with <b>non-rigid garment deformation modeling</b> and <b>strong feature entanglement of clothing within human body</b>. 
+            This work tackles occlusion issues in Virtual Try-On (VTON). </br>
+            We taxonomize failures into:  
           </p>
           <p>
-            Recent groundbreaking formulations, such as <b>in-painting</b>, <b>cycle consistency</b>, and <b>knowledge distillation</b>, have facilitated self-supervised generation of try-on images. However, these paradigms necessitate the disentanglement of garment features within human body features through auxiliary tasks, such as leveraging 'teacher knowledge' and dual generators.
+            1. <b>Inherent Occlusions</b> – “ghost” garments from the reference image that remain in the result.
           </p>
           <p>
-            The potential presence of irresponsible prior knowledge in the auxiliary task can serve as a significant bottleneck for the main generator (e.g., 'student model') in the downstream task. Moreover, existing garment deformation methods lack the ability to perceive the correlation between the garment and the human body in the real world, leading to unrealistic alignment effects. 
+            2. <b>Acquired Occlusions</b> – distorted human anatomy that visually blocks the new outfit.
           </p>
           <p>
-            To tackle these limitations, we present a new network for parser-free virtual try-on called unified self-cycle consistency (<b>USC-PFN</b>), which enables robust translation between different garments using just a single generator, faithfully replicating non-rigid geometric deformation of garments in real-life scenarios. Specifically, we first propose a self-cycle consistency architecture with a circular mode. It utilizes real unpaired garment-person images exclusively as input for training, effectively eliminating the impact of irresponsible prior knowledge at the model input end. Additionally, we formulate a Markov Random Field to simulate a more natural and realistic garment deformation. Furthermore, USC-PFN can leverage a general generator for self-supervised cycle training.
+            To remove both, we propose a <b>mask-free VTON framework</b> with two plug-and-play operations:
           </p>
           <p>
-            Experiments demonstrate that our method achieves state-of-the-art performance on a popular virtual try-on benchmark.
+            - <b>Background Pre-Replacement</b> – swaps the background before generation so the model never confuses clothes with body/background, suppressing inherent occlusions.
+          </p>
+          <p>
+            - <b>Covering-and-Eliminating</b> – enforces human-aware semantics, yielding anatomically plausible shapes and thus fewer acquired occlusions.
+          </p>
+          
+          <p>
+            The operations are architecture-agnostic: drop them into GANs or diffusion models without re-design.
           </p>
         </div>
       </div>
@@ -182,15 +203,16 @@
         <!--/ MAIN -->
         <div>
           <div style="float:left;">
-              <img src="./static/paper.png" style="width: 220px; margin:20px; box-shadow: 7px 7px 10px 10px grey;">
+              <img src="./static/images/paper.jpg" style="width: 220px; margin:20px; box-shadow: 7px 7px 10px 10px grey;">
           </div>
           <div style="margin-top: 100px; margin-left: 35px; margin-bottom: auto; float:left;">
-              <a href="https://arxiv.org/">[Paper]</a>
-              <a href="https://github.com/du-chenghu/USC-PFN/">[Code]</a>
+              <a href="https://openreview.net/pdf?id=oh2MpJHGHW">[Paper]</a>
+              <a href="https://openreview.net/pdf?id=oh2MpJHGHW">[Supplementary Material]</a>
+              <a href="https://github.com/du-chenghu/OccFree-VTON">[Code]</a>
               <p>
                   NeurIPS, 2023. <br>
-                  Chenghu Du, Junyin Wang, Shuqing Liu, Shengwu Xiong*. <br>
-                  "USC-PFN: Unified Self-cycle Consistency for Parser-free <br> Virtual Try-on"
+                  Chenghu Du, Shengwu Xiong, Junyin Wang, and others. <br>
+                  "Mitigating Occlusions in Virtual Try-On via A <br> Simple-Yet-Effective Mask-Free Framework"
               </p>
           </div>
         </div>
@@ -221,9 +243,17 @@
 <!-- Results. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Results</h2>
+        <h2 class="title is-3">Results (Dress)</h2>
         <div style="float:left;">
-              <img src="./imgs/head.gif">
+              <img src="static/images/appDress_01.png">
+        </div>
+        <h2 class="title is-3">Results (Upper)</h2>
+        <div style="float:left;">
+              <img src="static/images/appUpper_01.png">
+        </div>
+        <h2 class="title is-3">Results (Lower)</h2>
+        <div style="float:left;">
+              <img src="static/images/appLower_01.png">
         </div>
       </div>
     </div>
@@ -235,7 +265,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div>
-              <img src="./static/bottom.png" style="width: 100%;">
+              <img src="static/images/bottom.png" style="width: 100%;">
         </div>
       </div>
     </div>
@@ -252,12 +282,11 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-    @inproceedings{du2023greatness,
-        title={Greatness in Simplicity: Unified Self-Cycle Consistency for Parser-Free Virtual Try-On},
-        author={Du, Chenghu and Wang, Junyin and Liu, Shuqing and Xiong, Shengwu},
-        booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
-        year={2023}
-        pages={1--12},
+    @article{du2025mitigating,
+      title={Mitigating Occlusions in Virtual Try-On via A Simple-Yet-Effective Mask-Free Framework},
+      author={Du, Chenghu and Xiong, Shengwu and Wang, Junyin and Rong, Yi and Xiong, Shili},
+      journal={Advances in Neural Information Processing Systems},
+      year={2025}
     }
     </code></pre>
   </div>
